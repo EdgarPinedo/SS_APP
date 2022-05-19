@@ -17,16 +17,10 @@ def cosineSimVectors(vec1, vec2):
 
     return cosine_similarity(vec1, vec2)[0][0]
 
-def main(): 
-    strings = ["Programación", "Estrucrura de Datos"]
+def buscar(strings): 
     cleaned = list(map(cleanString, strings))
     print(cleaned)
     vectorizer = CountVectorizer().fit_transform(cleaned)
     vectors =  vectorizer.toarray()
     csim = cosineSimVectors(vectors[0], vectors[1])
-    print(csim)
-    
-
-
-if __name__ == "__main__":
-    main()
+    return csim

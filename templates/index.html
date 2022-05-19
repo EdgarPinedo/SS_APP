@@ -16,10 +16,10 @@
         <a class="nav-link text-white" href="/new">Agregar</a>
       </nav>
 
-      <div class="col-md-4 container my-4" style="overflow: auto;">
-        <input class="form-control mr-sm-2" style="width:83%; float:left" type="search" placeholder="Buscar" aria-label="Search" id="search">
-        <button class="btn btn-outline-success" style="width:15%; float:right" type="submit">Buscar</button>
-      </div>
+      <form action="/busqueda" method="POST" class="col-md-4 container my-4" style="overflow: auto;">
+        <input class="form-control mr-sm-2" style="width:83%; float:left" type="search" placeholder="Buscar" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" style="width:15%; float:right">Buscar</button>
+      </form>
 
       <div class="col-md-7 container">
         <table class="table table-striped table-hover table-bordered">
