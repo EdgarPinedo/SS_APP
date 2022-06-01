@@ -53,7 +53,7 @@ def agregarMateria():
         competenciaG = request.form['competenciaG']
         competenciaP = request.form['competenciaP']
         contenido = request.form['contenido']
-        data = {'id':id, 'tittle':title, 'categoria':categoria, 'description':description, 
+        data = {'id':id, 'title':title, 'categoria':categoria, 'description':description, 
                 'competenciaU':competenciaU, 'competenciaG':competenciaG, 'competenciaP':competenciaP, 'contenido':contenido}
         db.collection('Materias INCO').document(id).set(data)
     return redirect(url_for('index'))
