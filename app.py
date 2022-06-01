@@ -29,7 +29,7 @@ def busqueda():
         list = []
         stringBusqueda = request.form['search']
         for materia in materias:
-            strings = [materia.to_dict()['tittle'], stringBusqueda]
+            strings = [materia.to_dict()['title'], stringBusqueda]
             similarity = buscar(strings)
             if(similarity > 0.36):
                 list.append(materia.to_dict())
@@ -46,7 +46,7 @@ def new():
 def agregarMateria():    
     if request.method == 'POST':
         id = request.form['id']
-        title = request.form['tittle']
+        title = request.form['title']
         categoria = request.form['categoria']
         description = request.form['description']
         competenciaU = request.form['competenciaU']
