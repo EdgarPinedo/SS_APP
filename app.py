@@ -47,11 +47,24 @@ def agregarMateria():
     if request.method == 'POST':
         id = request.form['id']
         title = request.form['tittle']
+        categoria = request.form['categoria']
         description = request.form['description']
-        data = {'id':id, 'tittle':title, 'description':description}
-        db.collection('Materias').document(id).set(data)
+        competenciaU = request.form['competenciaU']
+        competenciaG = request.form['competenciaG']
+        competenciaP = request.form['competenciaP']
+        contenido = request.form['contenido']
+        data = {'id':id, 'tittle':title, 'categoria':categoria, 'description':description, 
+                'competenciaU':competenciaU, 'competenciaG':competenciaG, 'competenciaP':competenciaP, 'contenido':contenido}
+        db.collection('Materias INCO').document(id).set(data)
     return redirect(url_for('index'))
 
+
+# Ver detalles de materia
+
+@app.route('/detalles/<id>')
+def show(id):
+    materia = db.collection('Materias').where("id", "==", id).get()[0].to_dict()
+    return render_template('show.html', mat = materia)
 
 if __name__ == '__main__':
     app.run(debug = True)        
