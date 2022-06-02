@@ -2,6 +2,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from similarity import buscar
+import html
 
 cred = credentials.Certificate('serviceAccountKey.json')
 firebase_admin.initialize_app(cred)
@@ -16,27 +17,44 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    materias = db.collection('Materias INCO').get()
+    list = []
+    for materia in materias:
+        list.append(materia.to_dict())
+    return render_template('index.html', mats = list, _index = "inco")
+
+@app.route('/INNI')
+def inni():
     materias = db.collection('Materias').get()
     list = []
     for materia in materias:
         list.append(materia.to_dict())
-    return render_template('index.html', mats = list)
+    return render_template('index.html', mats = list, _index = "inni")
 
-@app.route('/busqueda', methods = ['POST'])
-def busqueda():
+
+#buscar materias
+
+@app.route('/busqueda/<index>', methods = ['POST'])
+def busqueda(index):
     if request.method == 'POST':
-        materias = db.collection('Materias').get()
         list = []
+        
+        if index == "inco":
+            materias = db.collection('Materias INCO').get()
+        elif index == "inni":
+            materias = db.collection('Materias').get()
+
         stringBusqueda = request.form['search']
         for materia in materias:
             strings = [materia.to_dict()['title'], stringBusqueda]
             similarity = buscar(strings)
             if(similarity > 0.36):
                 list.append(materia.to_dict())
-    return render_template('index.html', mats = list)
+
+    return render_template('index.html', mats = list, _index = index)
 
 
-# Agregar page
+# Agregar materia
 
 @app.route('/new')
 def new():
@@ -53,17 +71,27 @@ def agregarMateria():
         competenciaG = request.form['competenciaG']
         competenciaP = request.form['competenciaP']
         contenido = request.form['contenido']
+        carrera = request.form['index']
         data = {'id':id, 'title':title, 'categoria':categoria, 'description':description, 
                 'competenciaU':competenciaU, 'competenciaG':competenciaG, 'competenciaP':competenciaP, 'contenido':contenido}
-        db.collection('Materias INCO').document(id).set(data)
-    return redirect(url_for('index'))
+        
+        if carrera == "INCO":
+            db.collection('Materias INCO').document(id).set(data)
+            return redirect(url_for('index'))
+        else:
+            db.collection('Materias').document(id).set(data)
+            return redirect(url_for('/INNI'))
+    
 
 
 # Ver detalles de materia
 
-@app.route('/detalles/<id>')
-def show(id):
-    materia = db.collection('Materias').where("id", "==", id).get()[0].to_dict()
+@app.route('/detalles/<carrera>/<id>')
+def show(carrera, id):
+    if carrera == "inco":
+        materia = db.collection('Materias INCO').where("id", "==", id).get()[0].to_dict()
+    elif carrera == "inni":
+        materia = db.collection('Materias').where("id", "==", id).get()[0].to_dict()
     return render_template('show.html', mat = materia)
 
 if __name__ == '__main__':

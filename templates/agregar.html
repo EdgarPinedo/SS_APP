@@ -1,49 +1,57 @@
 {% extends "base_template.html" %}
 {% block content %}
 
-  <h5 class="w-[1100px] text-center mt-7 mb-5 text-2xl font-bold tracking-tight text-[#0b8793]">Agregar materia</h5>
+  <h5 class="w-[1100px] text-center mt-7 mb-5 text-2xl font-bold tracking-tight text-sky-600">Agregar materia</h5>
 
   <form action="/agregarmateria" method="POST" class="w-[1100px]">
     <div class="grid xl:grid-cols-3 xl:gap-6">
       <div class="relative z-0 w-full mb-6 group">
-        <label for="id" class="block mb-2 text-sm font-medium text-[#0b8793]">ID</label>
-        <input type="text" autocomplete="off" name="id" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-[#0b8793] placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]"required>
+        <label for="id" class="block mb-2 text-sm font-medium text-sky-400">ID</label>
+        <input type="text" autocomplete="off" name="id" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-sky-400 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400"required>
       </div>
       <div class="relative z-0 w-full mb-6 group">
-        <label for="tittle" class="block mb-2 text-sm font-medium text-[#0b8793]">Nombre</label>
-        <input type="text" autocomplete="off" name="title" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-[#0b8793] placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]"required>
+        <label for="tittle" class="block mb-2 text-sm font-medium text-sky-400">Nombre</label>
+        <input type="text" autocomplete="off" name="title" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-sky-400 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400"required>
       </div>
       <div class="relative z-0 w-full mb-6 group">
-        <label for="categoria" class="block mb-2 text-sm font-medium text-[#0b8793]">Categoría</label>
-        <input type="text" autocomplete="off" name="categoria" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-[#0b8793] placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]"required>
+        <label for="categoria" class="block mb-2 text-sm font-medium text-sky-400">Categoría</label>
+        <input type="text" autocomplete="off" name="categoria" class="border text-sm rounded-lg block p-2.5 w-full bg-gray-900 border-sky-400 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400"required>
       </div>
     </div>
+
+    <label for="index" class="block mb-2 text-sm font-medium text-sky-400">Carrera</label>
+    <select name="index" class="border text-sm rounded-lg block w-full p-2.5 mb-6 bg-gray-900 border-sky-400 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400">
+      <option>INCO</option>
+      <option>INNI</option>
+    </select>
     
     <div class="mb-6">
-      <label for="description" class="block mb-2 text-sm font-medium text-[#0b8793]">Descripción</label>
-      <textarea type="text" name="description" class="block w-full h-[150px] p-4 border border-[#0b8793] rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]" required></textarea>
+      <label for="description" class="block mb-2 text-sm font-medium text-sky-400">Descripción</label>
+      <textarea type="text" name="description" class="block w-full h-[150px] p-4 border border-sky-400 rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400" required></textarea>
     </div>
     <div class="mb-6">
-      <label for="competenciaU" class="block mb-2 text-sm font-medium text-[#0b8793]">Competencia de la Unidad</label>
-      <textarea type="text" name="competenciaU" class="block w-full h-[150px] p-4 border border-[#0b8793] rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]" required></textarea>
+      <label for="competenciaU" class="block mb-2 text-sm font-medium text-sky-400">Competencia de la Unidad</label>
+      <textarea type="text" name="competenciaU" class="block w-full h-[150px] p-4 border border-sky-400 rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400" required></textarea>
     </div>
     <div class="mb-6">
-      <label for="competenciaG" class="block mb-2 text-sm font-medium text-[#0b8793]">Competencia Genérica</label>
-      <textarea type="text" name="competenciaG" class="block w-full h-[150px] p-4 border border-[#0b8793] rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]" required></textarea>
+      <label for="competenciaG" class="block mb-2 text-sm font-medium text-sky-400">Competencia Genérica</label>
+      <textarea type="text" name="competenciaG" class="block w-full h-[150px] p-4 border border-sky-400 rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400" required></textarea>
     </div>
     <div class="mb-6">
-      <label for="competenciaP" class="block mb-2 text-sm font-medium text-[#0b8793]">Competencia Profesional</label>
-      <textarea type="text" name="competenciaP" class="block w-full h-[150px] p-4 border border-[#0b8793] rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]" required></textarea>
+      <label for="competenciaP" class="block mb-2 text-sm font-medium text-sky-400">Competencia Profesional</label>
+      <textarea type="text" name="competenciaP" class="block w-full h-[150px] p-4 border border-sky-400 rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400" required></textarea>
     </div>
     <div class="mb-6">
-      <label for="contenido" class="block mb-2 text-sm font-medium text-[#0b8793]">Contenido</label>
-      <textarea type="text" name="contenido" class="block w-full h-[150px] p-4 border border-[#0b8793] rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-[#0b8793]" required></textarea>
+      <label for="contenido" class="block mb-2 text-sm font-medium text-sky-400">Contenido</label>
+      <textarea type="text" name="contenido" class="block w-full h-[150px] p-4 border border-sky-400 rounded-lg sm:text-md bg-gray-900 placeholder-gray-400 text-white focus:outline-none focus:ring focus:ring-sky-400" required></textarea>
     </div>
 
     <div class="flex justify-end w-[1100px] mb-7">
-      <button class="p-2.5 ml-2 bg-[#0b8793] flex w-auto rounded-lg hover:bg-[#013C41] font-bold text-white"> Guardar
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+      <button class="p-2.5 pl-3 bg-sky-600 flex items-center w-auto rounded-lg hover:bg-sky-800 font-bold text-black hover:text-white"> Guardar
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+          <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+          <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
         </svg>
       </button>
     </div>
