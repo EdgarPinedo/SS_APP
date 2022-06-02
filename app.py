@@ -94,5 +94,22 @@ def show(carrera, id):
         materia = db.collection('Materias').where("id", "==", id).get()[0].to_dict()
     return render_template('show.html', mat = materia)
 
+# Eliminar materia
+
+@app.route('/eliminarmateria', methods = ['GET', 'DELETE'])
+def eliminarMateria():
+    try:
+        if request.method == 'GET':
+            id = request.args.get('id')
+            carrera = request.args.get('carrera')
+            if carrera == "INCO":
+                db.collection('Materias INCO').document(id).delete()
+            else:
+                db.collection('Materias').document(id).delete()
+        return redirect(url_for('index'))
+    except Exception as e:
+        return f'Error: {e}'
+        
+
 if __name__ == '__main__':
-    app.run(debug = True)        
+    app.run(debug = True)
